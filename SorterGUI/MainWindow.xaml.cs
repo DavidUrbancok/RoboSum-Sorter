@@ -24,5 +24,15 @@ namespace RoboSum_Sorter
         {
             InitializeComponent();
         }
+
+        private void Close_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void Load_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
