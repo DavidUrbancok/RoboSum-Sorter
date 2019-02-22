@@ -2,6 +2,9 @@
 
 namespace RoboSum.ObjectModels
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class Competitor : IParticipant
     {
         /// <summary>

@@ -18,7 +18,7 @@
                     <MenuItem Header="_Open"/>
                     <MenuItem Header="_Save"/>
                     <Separator/>
-                    <MenuItem Header="_Close" x:Name="Close" Click="Close_Click"/>
+                    <MenuItem Header="_Close" Name="Close" Click="Close_Click"/>
                 </MenuItem>
             </Menu>
             <StackPanel></StackPanel>
