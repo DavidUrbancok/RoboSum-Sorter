@@ -7,15 +7,19 @@
         mc:Ignorable="d"
         Title="RoboSum Sorter" Height="Auto" Width="Auto">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" x:Name="Image"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        
-        <DockPanel>
+
+        <DockPanel Grid.ColumnSpan="2">
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="_File">
-                    <MenuItem Header="_Open"/>
+                    <MenuItem Header="_Open" Name="Open" Click="Open_Click"/>
                     <MenuItem Header="_Save"/>
                     <Separator/>
                     <MenuItem Header="_Close" Name="Close" Click="Close_Click"/>
@@ -24,12 +28,22 @@
             <StackPanel></StackPanel>
         </DockPanel>
 
-        <StackPanel Grid.Row="0">
+        <StackPanel Grid.Row="0" Grid.ColumnSpan="2">
             <Image Width="550" Source="..\Images\RoboSum.png" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="30"/>
         </StackPanel>
 
-        <StackPanel Grid.Row="1">
-            <Button Background="Green" x:Name="Load" Width="100" Height="30" Foreground="White" FontWeight="Bold" Click="Load_Click">Load CSV</Button>
+        <StackPanel Grid.Row="1" Grid.ColumnSpan="2">
+            <Button Background="Green" Name="LoadButton" Width="100" Height="30" Foreground="White" FontWeight="Bold" Click="Load_Click">Load CSV</Button>
+            <Grid HorizontalAlignment="Center" Height="auto" VerticalAlignment="Center" Width="auto" Name="TeamsGrid" Visibility="Hidden">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200" Name="Team"/>
+                    <ColumnDefinition Width="200" Name="Participant1"/>
+                    <ColumnDefinition Width="200" Name="Participant2"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Content="Team" FontWeight="Bold"/>
+                <Label Grid.Column="1" Content="Participant 1" FontWeight="Bold"/>
+                <Label Grid.Column="2" Content="Participant 2" FontWeight="Bold"/>
+            </Grid>
         </StackPanel>
 
     </Grid>

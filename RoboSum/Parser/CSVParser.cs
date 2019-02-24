@@ -24,12 +24,12 @@ namespace RoboSum.Parser
         }
 
         /// <summary>
-        /// Parses a CSV file from <paramref name="filePath"/> to a list of teams.
+        /// Parses a CSV file from <paramref name="fileName"/> to a list of teams.
         /// </summary>
-        /// <param name="filePath">Path to the CSV file.</param>
-        public void ParseTeams(string filePath)
+        /// <param name="fileName">Absolute path to the CSV file including filename.</param>
+        public void ParseTeams(string fileName)
         {
-            using (var parser = new TextFieldParser(filePath))
+            using (var parser = new TextFieldParser(fileName))
             {
                 parser.SetDelimiters(";", ",");
 

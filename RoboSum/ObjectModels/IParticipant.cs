@@ -14,5 +14,10 @@
         /// 
         /// </summary>
         string Firstname { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        string GetParticipantName();
     }
 }

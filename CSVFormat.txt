@@ -17,6 +17,6 @@ SchoolAddress[string]
 
 RobotOlymp[bool]
 RoboCross[bool]
-RoboSumo[bool]
+RoboSum[bool]
 
 Remarks[string]

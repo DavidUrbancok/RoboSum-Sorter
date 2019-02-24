@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Win32;
+using RoboSum.ObjectModels;
+using RoboSum.Parser;
+using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace RoboSum_Sorter
 {
@@ -20,6 +12,8 @@ namespace RoboSum_Sorter
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Storage _storage;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -32,7 +26,42 @@ namespace RoboSum_Sorter
 
         private void Load_Click(object sender, RoutedEventArgs e)
         {
+            Open_Click(sender, e);
+        }
 
+        private void Open_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new OpenFileDialog
+            {
+                DefaultExt = ".csv",
+                Filter = "CSV Files (*.csv)|*.csv"
+            };
+
+            bool? result = dialog.ShowDialog();
+
+            if (result is true)
+            {
+                var fileName = dialog.FileName;
+
+                LoadTeams(fileName);
+
+                foreach(var team in _storage.Teams)
+                {
+                    TeamsGrid.Children.Add();
+                }
+            }
+
+            TeamsGrid.Visibility = Visibility.Visible;
+            LoadButton.Visibility = Visibility.Hidden;
+        }
+
+        private void LoadTeams(string filename)
+        {
+            _storage = new Storage();
+
+            var parser = new CSVParser(_storage);
+
+            parser.ParseTeams(filename);
         }
     }
 }

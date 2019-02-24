@@ -27,5 +27,10 @@ namespace RoboSum.ObjectModels
             LastName = lastName ?? throw new ArgumentNullException(nameof(lastName));
             Firstname = firstName ?? throw new ArgumentNullException(nameof(firstName));
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string GetParticipantName() => $"{Firstname} {LastName}";
     }
 }

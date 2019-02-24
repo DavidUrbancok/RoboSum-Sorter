@@ -123,5 +123,11 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RoboSum\RoboSum.csproj">
+      <Project>{375385c5-e5d3-4312-94c9-96882a5edbd7}</Project>
+      <Name>RoboSum</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
