@@ -29,7 +29,7 @@
         </DockPanel>
 
         <StackPanel Grid.Row="0" Grid.ColumnSpan="2">
-            <Image Width="550" Source="..\Images\RoboSum.png" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="30"/>
+            <Image Width="550" Source="C:\Users\David\Documents\RoboSum\Images\RoboSum.png" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="30"/>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.ColumnSpan="2">
@@ -37,12 +37,9 @@
             <Grid HorizontalAlignment="Center" Height="auto" VerticalAlignment="Center" Width="auto" Name="TeamsGrid" Visibility="Hidden">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="200" Name="Team"/>
-                    <ColumnDefinition Width="200" Name="Participant1"/>
-                    <ColumnDefinition Width="200" Name="Participant2"/>
+                    <ColumnDefinition Width="400" Name="School"/>
+                    <ColumnDefinition Width="200" Name="City"/>
                 </Grid.ColumnDefinitions>
-                <Label Grid.Column="0" Content="Team" FontWeight="Bold"/>
-                <Label Grid.Column="1" Content="Participant 1" FontWeight="Bold"/>
-                <Label Grid.Column="2" Content="Participant 2" FontWeight="Bold"/>
             </Grid>
         </StackPanel>
 

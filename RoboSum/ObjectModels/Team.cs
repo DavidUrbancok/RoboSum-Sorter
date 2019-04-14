@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Net.Mail;
 
 namespace RoboSum.ObjectModels
 {
     /// <summary>
-    /// 
+    /// Represents a team participating in RoboSum.
     /// </summary>
     public class Team
     {
@@ -14,47 +13,26 @@ namespace RoboSum.ObjectModels
         public string Name { get; set; }
 
         /// <summary>
-        /// Team email.
-        /// </summary>
-        public MailAddress Email { get; set; }
-
-        /// <summary>
-        /// Team's first competitor.
-        /// </summary>
-        public Competitor FirstCompetitor { get; set; }
-
-        /// <summary>
-        /// Team's second competitor.
-        /// </summary>
-        public Competitor SecondCompetitor { get; set; }
-
-        /// <summary>
-        /// Team coach.
-        /// </summary>
-        public Coach Coach { get; set; }
-
-        /// <summary>
         /// School from which the team comes.
         /// </summary>
-        public School School { get; set; }
+        public string School { get; set; }
 
         /// <summary>
-        /// Creates a new instance of <see cref="Team"/>.
+        /// Home city of the team.
+        /// </summary>
+        public string City { get; set; }
+
+        /// <summary>
+        /// Initializes a new instance of <see cref="Team"/>.
         /// </summary>
         /// <param name="name">Team name.</param>
-        /// <param name="email">Team email.</param>
-        /// <param name="firstCompetitor">Team's first competitor.</param>
-        /// <param name="secondCompetitor">Team's second competitor.</param>
-        /// <param name="coach">Team's coach.</param>
         /// <param name="school">School from which the team comes.</param>
-        public Team(string name, MailAddress email, Competitor firstCompetitor, Competitor secondCompetitor, Coach coach, School school)
+        /// <param name="city">Home city of the team.</param>
+        public Team(string name, string school, string city)
         {
             Name = name ?? throw new ArgumentNullException(nameof(name));
-            Email = email ?? throw new ArgumentNullException(nameof(email));
-            FirstCompetitor = firstCompetitor ?? throw new ArgumentNullException(nameof(firstCompetitor));
-            SecondCompetitor = secondCompetitor ?? throw new ArgumentNullException(nameof(secondCompetitor));
-            Coach = coach ?? throw new ArgumentNullException(nameof(coach));
             School = school ?? throw new ArgumentNullException(nameof(school));
+            City = city ?? throw new ArgumentNullException(nameof(city));
         }
     }
 }

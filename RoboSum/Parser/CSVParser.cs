@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualBasic.FileIO;
+
 using RoboSum.ObjectModels;
-using System.Net.Mail;
 
 namespace RoboSum.Parser
 {
@@ -37,7 +37,8 @@ namespace RoboSum.Parser
                 {
                     try
                     {
-                        var team = ParseLineToTeam(parser.ReadFields());
+                        var line = parser.ReadFields();
+                        var team = new Team(line[0], line[1], line[2]);
 
                         Storage.Save(team);
                     }
@@ -47,27 +48,6 @@ namespace RoboSum.Parser
                     }
                 }
             }
-        }
-
-        /// <summary>
-        /// Parses <paramref name="line"/> to an instance of <see cref="Team"/>.
-        /// </summary>
-        /// <param name="line">One line of CSV file.</param>
-        private Team ParseLineToTeam(string[] line)
-        {
-            string teamName = line[0];
-            MailAddress teamEmail = new MailAddress(line[1]);
-
-            var firstCompetitor = new Competitor(line[2], line[3], int.Parse(line[4]));
-            var secondCompetitor = new Competitor(line[5], line[6], int.Parse(line[7]));
-
-            var coach = new Coach(line[8], line[9]);
-
-            var school = new School(line[10], line[11]);
-
-            var team = new Team(teamName, teamEmail, firstCompetitor, secondCompetitor, coach, school);
-
-            return team;
         }
     }
 }

@@ -45,14 +45,48 @@ namespace RoboSum_Sorter
 
                 LoadTeams(fileName);
 
-                foreach(var team in _storage.Teams)
+                int row = 0;
+                foreach (var team in _storage.Teams)
                 {
-                    TeamsGrid.Children.Add();
+                    AddTeamToGrid(team, row);
+
+                    row++;
                 }
             }
 
             TeamsGrid.Visibility = Visibility.Visible;
             LoadButton.Visibility = Visibility.Hidden;
+        }
+
+        private void AddTeamToGrid(Team team, int row)
+        {
+            TeamsGrid.RowDefinitions.Add(new RowDefinition());
+
+            for (int i = 0; i < TeamsGrid.ColumnDefinitions.Count; i++)
+            {
+                var textBlock = new TextBlock();
+
+                if (i == 0)
+                {
+                    textBlock.Text = team.Name;
+                    textBlock.FontSize = 20;
+                }
+                else if (i == 1)
+                {
+                    textBlock.Text = team.School;
+                }
+                else
+                {
+                    textBlock.Text = team.City;
+                }
+
+                textBlock.VerticalAlignment = VerticalAlignment.Center;
+
+                textBlock.SetValue(Grid.ColumnProperty, i);
+                textBlock.SetValue(Grid.RowProperty, row);
+
+                TeamsGrid.Children.Add(textBlock);
+            }
         }
 
         private void LoadTeams(string filename)

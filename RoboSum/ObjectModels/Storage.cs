@@ -13,29 +13,11 @@ namespace RoboSum.ObjectModels
         public List<Team> Teams { get; set; }
 
         /// <summary>
-        /// List of partaking competitors.
-        /// </summary>
-        public List<Competitor> Competitors { get; set; }
-
-        /// <summary>
-        /// List of participating schools.
-        /// </summary>
-        public List<School> Schools { get; set; }
-
-        /// <summary>
-        /// List of team coaches.
-        /// </summary>
-        public List<Coach> Coaches { get; set; }
-
-        /// <summary>
         /// Creates a new instance of <see cref="Storage"/>.
         /// </summary>
         public Storage()
         {
             Teams = new List<Team>();
-            Competitors = new List<Competitor>();
-            Schools = new List<School>();
-            Coaches = new List<Coach>();
         }
 
         /// <summary>
@@ -47,26 +29,6 @@ namespace RoboSum.ObjectModels
             if (!Teams.Contains(team))
             {
                 Teams.Add(team);
-            }
-
-            if (!Competitors.Contains(team.FirstCompetitor))
-            {
-                Competitors.Add(team.FirstCompetitor);
-            }
-
-            if (!Competitors.Contains(team.SecondCompetitor))
-            {
-                Competitors.Add(team.SecondCompetitor);
-            }
-
-            if (!Schools.Contains(team.School))
-            {
-                Schools.Add(team.School);
-            }
-
-            if (!Coaches.Contains(team.Coach))
-            {
-                Coaches.Add(team.Coach);
             }
         }
     }
