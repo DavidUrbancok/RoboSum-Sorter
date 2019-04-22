@@ -20,7 +20,6 @@
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="_File">
                     <MenuItem Header="_Open" Name="Open" Click="Open_Click"/>
-                    <MenuItem Header="_Save"/>
                     <Separator/>
                     <MenuItem Header="_Close" Name="Close" Click="Close_Click"/>
                 </MenuItem>
@@ -29,7 +28,7 @@
         </DockPanel>
 
         <StackPanel Grid.Row="0" Grid.ColumnSpan="2">
-            <Image Width="550" Source="C:\Users\David\Documents\RoboSum\Images\RoboSum.png" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="30"/>
+            <Image Width="550" Source="C:\Users\David\Documents\RoboSum\Images\RoboSum.png" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="30" />
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.ColumnSpan="2">
@@ -39,9 +38,10 @@
                     <ColumnDefinition Width="200" Name="Team"/>
                     <ColumnDefinition Width="400" Name="School"/>
                     <ColumnDefinition Width="200" Name="City"/>
+                    <ColumnDefinition Width="50" Name="Group"/>
                 </Grid.ColumnDefinitions>
             </Grid>
+            <Button Background="Green" Name="SortButton" Width="100" Height="30" Foreground="White" FontWeight="Bold" Visibility="Hidden" Click="Sort_Click">Sort teams</Button>
         </StackPanel>
-
     </Grid>
 </Window>

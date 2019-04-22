@@ -2,6 +2,7 @@
 using RoboSum.ObjectModels;
 using RoboSum.Parser;
 using System;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -13,6 +14,9 @@ namespace RoboSum_Sorter
     public partial class MainWindow : Window
     {
         private Storage _storage;
+        private readonly Random random = new Random();
+        private int _As;
+        private int _Bs;
 
         public MainWindow()
         {
@@ -27,6 +31,66 @@ namespace RoboSum_Sorter
         private void Load_Click(object sender, RoutedEventArgs e)
         {
             Open_Click(sender, e);
+        }
+
+        private void Sort_Click(object sender, RoutedEventArgs e)
+        {
+            int row = 0;
+
+            foreach (var team in _storage.Teams)
+            {
+                AssignGroupToTeam(row);
+
+                Thread.Sleep(25);
+
+                row++;
+            }
+
+            SortButton.Visibility = Visibility.Hidden;
+        }
+
+        private void AssignGroupToTeam(int row)
+        {
+            const int column = 4;
+
+            var textBlock = new TextBlock
+            {
+                VerticalAlignment = VerticalAlignment.Center,
+                FontSize = 20
+            };
+
+            if (random.Next(0, 1000) % 2 == 0)
+            {
+                if (_As > 0)
+                {
+                    _As--;
+                    textBlock.Text = "A";
+                }
+                else
+                {
+                    _Bs--;
+                    textBlock.Text = "B";
+                }
+
+            }
+            else
+            {
+                if (_Bs > 0)
+                {
+                    _Bs--;
+                    textBlock.Text = "B";
+                }
+                else
+                {
+                    _As--;
+                    textBlock.Text = "A";
+                }
+            }
+
+            textBlock.SetValue(Grid.ColumnProperty, column);
+            textBlock.SetValue(Grid.RowProperty, row);
+
+            TeamsGrid.Children.Add(textBlock);
         }
 
         private void Open_Click(object sender, RoutedEventArgs e)
@@ -56,13 +120,14 @@ namespace RoboSum_Sorter
 
             TeamsGrid.Visibility = Visibility.Visible;
             LoadButton.Visibility = Visibility.Hidden;
+            SortButton.Visibility = Visibility.Visible;
         }
 
         private void AddTeamToGrid(Team team, int row)
         {
             TeamsGrid.RowDefinitions.Add(new RowDefinition());
 
-            for (int i = 0; i < TeamsGrid.ColumnDefinitions.Count; i++)
+            for (int i = 0; i < TeamsGrid.ColumnDefinitions.Count - 1; i++)
             {
                 var textBlock = new TextBlock();
 
@@ -96,6 +161,9 @@ namespace RoboSum_Sorter
             var parser = new CSVParser(_storage);
 
             parser.ParseTeams(filename);
+
+            _As = _storage.Teams.Count / 2;
+            _Bs = _storage.Teams.Count - _As;
         }
     }
 }
